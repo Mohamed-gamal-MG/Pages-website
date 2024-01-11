@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>online or offline</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .continer {
+            text-align: center;
+        }
+
+        .title {
+            font-size: 50px;
+            font-weight: 900;
+        }
+
+        ul {
+            position: relative;
+            left: 30px;
+            font-weight: 900;
+            font-size: 20px;
+        }
+
+        .x {
+            margin: 10px;
+            padding: 10px;
+            outline: none;
+            border: none;
+            background-color: black;
+            color: aliceblue;
+            border-radius: 10px;
+            font-size: 25px;
+            transition: 1s;
+            box-shadow: 0px 0px 10px rgb(238, 13, 13);
+            cursor: pointer;
+        }
+
+        .x:hover {
+            color: rgb(255, 7, 7);
+            text-shadow: 0px 0px 10px rgb(17, 2, 2);
+            box-shadow: 0px 0px 10px rgb(3, 3, 3);
+            transform: scale(1.1);
+        }
+
+        .hidde {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="continer">
+    <h2 class="title">Offline Now</h2>
+    <ul>
+        <li>checking your connection</li>
+        <li>Or walk away from here, dog girl</li>
+    </ul>
+    <button class="x">reload</button>
+</div>
+
+<script>
+    // my first script
+    // امسك ام عناصر
+    var x = document.querySelector('.title')
+    var y = document.querySelector('ul')
+    var xyz = document.querySelector('.x')
+
+    // في حالة وجود انترنت
+    function online() {
+        x.innerHTML = "Online Now"
+        x.style.color = 'green'
+        // اخفي ul
+        y.classList.add('hidde');
+        xyz.classList.add('hidde');
+    }
+
+    // offline
+    function Offline() {
+        x.innerHTML = "Offline Now"
+        x.style.color = 'black'
+        // امسح ام كلاس
+        y.classList.remove('hidde');
+        xyz.classList.remove('hidde');
+    }
+
+    window.onload = function () {
+        if (window.navigator.onLine) {
+            online();
+        } else {
+            Offline();
+        }
+    }
+
+    window.addEventListener("online", function () {
+        online();
+    })
+
+    window.addEventListener("offline", function () {
+        Offline();
+    })
+
+    xyz.onclick = function () {
+        window.location.reload();
+    }
+</script>
+</body>
+</html>
